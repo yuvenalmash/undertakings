@@ -11,11 +11,6 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def destroy
-    resource.destroy
-    render json: { message: 'User deleted successfully' }, status: :ok
-  end
-
   private
 
   def sign_up_params
