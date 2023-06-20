@@ -1,0 +1,326 @@
+---
+openapi: 3.0.1
+info:
+  title: Undertakings API
+  version: v1
+paths:
+  "/api/v1/users/{user_id}/tasks":
+    post:
+      summary: create task
+      tags:
+      - Tasks
+      security:
+      - Bearer: {}
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: successful
+        '422':
+          description: unprocessable_entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: Task title
+                description:
+                  type: string
+                  example: Task description
+                due_date:
+                  type: string
+                  example: '2021-06-19 18:30:00'
+                completed:
+                  type: boolean
+                  example: false
+              required:
+              - title
+              - description
+              - due_date
+              - status
+    get:
+      summary: list tasks
+      tags:
+      - Tasks
+      security:
+      - Bearer: {}
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not_found
+  "/api/v1/users/{user_id}/tasks/{id}":
+    get:
+      summary: show task
+      tags:
+      - Tasks
+      security:
+      - Bearer: {}
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not_found
+    patch:
+      summary: update task
+      tags:
+      - Tasks
+      security:
+      - Bearer: {}
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not_found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: Task title
+                description:
+                  type: string
+                  example: Task description
+                due_date:
+                  type: string
+                  example: '2021-06-19 18:30:00'
+                completed:
+                  type: boolean
+                  example: false
+              required:
+              - title
+              - description
+              - due_date
+              - status
+    delete:
+      summary: delete task
+      tags:
+      - Tasks
+      security:
+      - Bearer: {}
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not_found
+  "/api/v1/users":
+    post:
+      summary: create user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: successful
+        '422':
+          description: unprocessable_entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: John Doe
+                email:
+                  type: string
+                  example: johndoe@example.com
+                password:
+                  type: string
+                  example: password
+                password_confirmation:
+                  type: string
+                  example: password
+              required:
+              - name
+              - email
+              - password
+              - password_confirmation
+    get:
+      summary: list users
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{id}":
+    get:
+      summary: show user
+      tags:
+      - Users
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not_found
+    put:
+      summary: update user
+      tags:
+      - Users
+      security:
+      - Bearer: {}
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+        '401':
+          description: unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: John Doe
+                email:
+                  type: string
+                  example: janedoe@example.com
+              required:
+              - name
+              - email
+    delete:
+      summary: delete user
+      tags:
+      - Users
+      security:
+      - Bearer: {}
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+        '401':
+          description: unauthorized
+  "/api/v1/users/sign_in":
+    post:
+      summary: sign in user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '200':
+          description: successful
+        '422':
+          description: unprocessable_entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: johndoe@example.com
+                password:
+                  type: string
+                  example: password
+              required:
+              - email
+              - password
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:3000
