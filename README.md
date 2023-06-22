@@ -33,18 +33,13 @@
 
 # 📖 [your_project_name] <a name="about-project"></a>
 
-**Undertakings** is a is a web application that allows users to manage their tasks and projects.
+**Undertakings** is a is an API for a task management application where users can create, update, and delete tasks.
+
+**Frontend Repository:** [Undertakings](https://github.com/yuvenalmash/undertakings-webapp)
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
-
-<details>
-  <summary>Frontend</summary>
-  <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
-  </ul>
-</details>
 
 <details>
   <summary>Backend</summary>
@@ -65,19 +60,15 @@
 ### Key Features <a name="key-features"></a>
 
 
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+- **User Authentication**
+- **CRUD Operations on Tasks**
+
+### API Documentation <a name="api-documentation"></a>
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LIVE DEMO -->
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-- [Live Demo Link](https://google.com)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
@@ -112,12 +103,6 @@ Run the following command to create the database:
   rails db:migrate
 ```
 
-Run the following command to seed the database(Optional):
-
-```sh
-  rails db:seed
-```
-
 ### Install
 
 Install this project with:
@@ -131,37 +116,22 @@ Install this project with:
 
 To run the project, execute the following command:
 
-<!--
-Example command:
-
 ```sh
   rails server
 ```
---->
+### API Documentation
+
+After running the project, open `http://localhost:3000/api-docs` in your browser to view the API documentation.
+
 
 ### Run tests
 
 To run tests, run the following command:
 
-<!--
-Example command:
 
 ```sh
-  bin/rails test test/models/article_test.rb
+  rspec
 ```
---->
-
-### Deployment
-
-You can deploy this project using:
-
-<!--
-Example:
-
-```sh
-
-```
- -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -182,9 +152,8 @@ Example:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
+- [ ] **[Fix Swagger Documentation]
+- [ ] **[Fix authentication]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
