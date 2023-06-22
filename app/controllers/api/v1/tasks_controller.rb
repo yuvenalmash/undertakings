@@ -28,7 +28,7 @@ class Api::V1::TasksController < ApplicationController
 
   def update
     if @task&.update(task_params)
-      render json: { message: 'Task updated successfully' }, status: :ok
+      render json: { message: 'Task updated successfully', task: @task }, status: :ok
     else
       render json: { error: 'Unable to update task' }, status: :bad_request
     end
@@ -36,7 +36,7 @@ class Api::V1::TasksController < ApplicationController
 
   def destroy
     if @task&.destroy
-      render json: { message: 'Task deleted successfully' }, status: :ok
+      render json: { message: 'Task deleted successfully', task_id: @task.id }, status: :ok
     else
       render json: { error: 'Unable to delete task' }, status: :bad_request
     end
