@@ -1,5 +1,5 @@
 class Api::V1::TasksController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_user, only: %i[index show create update destroy]
   before_action :set_task, only: %i[show update destroy]
 
@@ -49,7 +49,12 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def set_user
-    @user = User.find_by(id: params[:user_id])
+    param_user_id = params[:user_id]
+    if param_user_id == current_user.id.to_s
+      @user = current_user
+    else
+      render json: { error: 'Invalid user' }, status: :unauthorized
+    end
     return unless @user.nil?
 
     render json: { error: 'User not found' }, status: :not_found
