@@ -12,4 +12,6 @@ class ApplicationController < ActionController::API
   rescue JWT::DecodeError
     render json: { error: 'Invalid token' }, status: :unauthorized
   end
+
+  attr_reader :current_user
 end
