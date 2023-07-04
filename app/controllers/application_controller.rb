@@ -13,7 +13,5 @@ class ApplicationController < ActionController::API
     render json: { error: 'Invalid token' }, status: :unauthorized
   end
 
-  def current_user
-    @current_user
-  end
+  attr_reader :current_user
 end
