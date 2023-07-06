@@ -25,7 +25,8 @@ RSpec.configure do |config|
           url: 'https://{defaultHost}',
           variables: {
             defaultHost: {
-              default: '127.0.0.1:3000'
+              # default: '127.0.0.1:3000'
+              default: 'undertakings-5fbcc97dce19.herokuapp.com'
             }
           }
         }
