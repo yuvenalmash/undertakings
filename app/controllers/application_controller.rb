@@ -12,8 +12,8 @@ class ApplicationController < ActionController::API
     render json: { error: 'Invalid token' }, status: :unauthorized unless @current_user
   rescue JWT::ExpiredSignature
     render json: { error: 'Token expired' }, status: :unauthorized
-  rescue JWT::DecodeError
-    render json: { error: 'Invalid token' }, status: :unauthorized
+  # rescue JWT::DecodeError
+  #   render json: { error: 'Invalid token' }, status: :unauthorized
   end
 
   attr_reader :current_user
