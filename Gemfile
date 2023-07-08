@@ -40,7 +40,7 @@ gem 'rack-cors'
 gem 'devise'
 
 # Use devise-jwt for authentication
-gem 'devise-jwt'
+gem 'devise-jwt', '~> 0.10.0'
 
 # Use jwt for authentication
 gem 'jwt'
