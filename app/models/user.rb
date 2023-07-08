@@ -12,6 +12,6 @@ class User < ApplicationRecord
   def generate_jwt
     JWT.encode({ id: id,
                  exp: 1.day.from_now.to_i },
-               Rails.application.secrets.secret_key_base)
+               Rails.application.credentials.secret_key_base)
   end
 end
