@@ -15,6 +15,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
+    - [API Documentation](#api-documentation)
   - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
@@ -31,7 +32,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [your_project_name] <a name="about-project"></a>
+# 📖 Undertakings <a name="about-project"></a>
 
 **Undertakings** is a is an API for a task management application where users can create, update, and delete tasks.
 
@@ -64,7 +65,118 @@
 - **CRUD Operations on Tasks**
 
 ### API Documentation <a name="api-documentation"></a>
+***Base UR***L: `https://undertakings-5fbcc97dce19.herokuapp.com/api/v1`
 
+***Authentication***: Obtain a token by sending a POST request to `/users/sign_in` with the user's email and password. Use the token in the `Authorization` header of subsequent requests.
+
+<details>
+  <Summary >Authentication</Summary>
+  <ul>
+    <li>
+      POST /users
+      <ul>
+        <li>Creates a new user</li>
+        <li>Sample request body:
+          <pre>
+            {
+              "name": "John Doe",
+              "email": "johndoe@example.com",
+              "password": "password",
+              "password_confirmation": "password"
+            }
+          </pre>
+        </li>
+      </ul>
+    </li>
+    <li>
+      POST /users/sign_in
+      <ul>
+        <li>Logs in a user</li>
+        <li>Sample request body:
+          <pre>
+            {
+              "email": "johndoe@example.com",
+              "password": "password"
+            }
+          </pre>
+        </li>
+      </ul>
+    </li>
+    <li>
+      DELETE /users/{user_id}
+      <ul>
+        <li>Deletes a user</li>
+        <li>Requires authentication</li>
+      </ul>
+    </li>
+  </ul>
+</details>
+
+<details>
+  <Summary >Tasks</Summary>
+  <ul>
+    <li>
+      GET /users/{user_id}/tasks
+      <ul>
+        <li>Gets all tasks</li>
+        <li>Requires authentication</li>
+      </ul>
+    </li>
+    <li>
+      POST /users/{user_id}/tasks
+      <ul>
+        <li>Creates a new task</li>
+        <li>Requires authentication</li>
+        <li>Sample request body:
+          <pre>
+            {
+              "title": "Task Title",
+              "description": "Task Description",
+              "due_date": "2023-06-19 18:30:00",
+              "completed": false
+            }
+          </pre>
+        </li>
+      </ul>
+    </li>
+    <li>
+      GET /users/{user_id}/tasks/{task_id}
+      <ul>
+        <li>Gets a task</li>
+        <li>Requires authentication</li>
+      </ul>
+    </li>
+    <li>
+      PUT /users/{user_id}/tasks/{task_id}
+      <ul>
+        <li>Updates a task</li>
+        <li>Requires authentication</li>
+        <li>Sample request body:
+          <pre>
+            {
+              "title": "Task Title",
+              "description": "Task Description",
+              "due_date": "2023-06-19 18:30:00",
+              "completed": false
+            }
+          </pre>
+        </li>
+      </ul>
+    </li>
+    <li>
+      DELETE /users/{user_id}/tasks/{task_id}
+      <ul>
+        <li>Deletes a task</li>
+        <li>Requires authentication</li>
+      </ul>
+    </li>
+  </ul>
+</details>
+
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+[Live Demo Link](https://undertakings-5fbcc97dce19.herokuapp.com/api-docs/index.html)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -119,9 +231,6 @@ To run the project, execute the following command:
 ```sh
   rails server
 ```
-### API Documentation
-
-After running the project, open `http://localhost:3000/api-docs` in your browser to view the API documentation.
 
 
 ### Run tests
@@ -132,6 +241,10 @@ To run tests, run the following command:
 ```sh
   rspec
 ```
+
+### Deployment
+
+This project is deployed on Heroku.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -152,8 +265,9 @@ To run tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Fix Swagger Documentation]
-- [ ] **[Fix authentication]
+- [ ] Add user profile
+- [ ] Add user avatar
+- [ ] Add user settings
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
